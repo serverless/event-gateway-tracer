@@ -1,0 +1,35 @@
+type: aws-s3-website
+version: 0.2.0
+core: 0.2.x
+
+description: "AWS S3 Website component"
+license: Apache-2.0
+author: "Serverless, Inc. <hello@serverless.com> (https://serverless.com)"
+repository: "github:serverless/components"
+
+inputTypes:
+  accessKeyId:
+    type: string
+    displayName: AWS Access Key ID
+    description: AWS access key ID for your AWS account
+    required: true
+  secretAccessKey:
+    type: string
+    displayName: AWS Secret Key
+    description: AWS secret key ID for your AWS account
+    required: true
+  domain:
+    type: string
+    displayName: Domain Name
+    description: Domain name which your bucket will be named after
+    required: true
+  assets:
+    type: string
+    displayName: Assets
+    description: Path to static website assets
+    required: true
+  env:
+    type: object
+    displayName: Environment Variables
+    description: Environment variables to be included in a script with the front-end assets
+    required: false
