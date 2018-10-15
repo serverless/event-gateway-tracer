@@ -15,7 +15,8 @@
     "vis": "^4.21.0"
   },
   "devDependencies": {
-    "react-scripts": "latest"
+    "react-scripts": "latest",
+    "serverless-finch": "^2.3.2",
   },
   "scripts": {
     "start": "react-scripts start",

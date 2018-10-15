@@ -1,13 +1,17 @@
-name: web-client
-extends: service
+service: event-gateway-tracer
 
-components:
-  web-client:
-    type: ./components/aws-s3-website
-    inputs:
-      accessKeyId: ${env.AWS_ACCESS_KEY_ID_PROD}
-      secretAccessKey: ${env.AWS_SECRET_ACCESS_KEY_PROD}
-      domain: ${env.SERVERLESS_APP_PROD}-${self.serviceId}.com
-      assets: ${self.path}/build
-      env:
-        apiUrl: ${env.SERVERLESS_TENANT_PROD}-${env.SERVERLESS_APP_PROD}.slsgateway.com
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: event-gateaway-tracer
+    distributionFolder: build
+    indexDocument: index.html
+    errorDocument: error.html
