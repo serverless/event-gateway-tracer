@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "latest",
     "react-dom": "latest",
+    "react-json-pretty": "^1.7.9",
     "react-redux": "latest",
     "react-vertical-timeline-component": "^2.3.1",
     "redux": "latest",

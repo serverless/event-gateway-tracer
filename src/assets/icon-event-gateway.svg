@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="211px" height="154px" viewBox="0 0 211 154" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo-event-gateway" transform="translate(-350.000000, -263.000000)" fill="#F15953">
+            <g id="logo" transform="translate(47.000000, 263.000000)">
+                <g id="icon" transform="translate(303.000000, 0.000000)">
+                    <path d="M156.362344,111.543435 L211,111.543435 L105.5,0 L0,111.543435 L54.6329147,111.543435 L35.7037554,153.999944 L105.566487,112.223491 L175.296019,154 L156.362344,111.543435 Z M153.106399,104.239107 L116.611347,22.3936068 L194.029837,104.239107 L153.106399,104.239107 Z M16.9698241,104.239107 L94.3837428,22.3936068 L57.8886903,104.239107 L16.9698241,104.239107 Z M105.5,15.4501962 L145.088731,104.238882 L145.055374,104.238882 L148.268255,111.54321 L148.344506,111.54321 L159.165241,135.810209 L105.5,103.682359 L51.8350415,135.810434 L105.5,15.4501962 Z" id="gateways"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

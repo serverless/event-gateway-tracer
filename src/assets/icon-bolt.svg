@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="103px" height="148px" viewBox="0 0 103 148" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Stroke 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo-serverless-framework-v2-copy" transform="translate(-399.000000, -224.000000)" fill="#000000">
+            <g id="logo" transform="translate(399.000000, 224.000000)">
+                <g id="bolt">
+                    <path d="M61.1528927,65.6290668 C74.8926441,64.0225299 103,60.5151183 103,60.736453 C103,60.9554628 38.6450564,119.031188 6.66454447,148 C6.48828053,147.854458 6.53850878,147.895842 6.36270991,147.749836 C20.3182567,124.884934 34.2733385,102.020032 48.2288853,79.1551305 C48.0958735,78.9547202 48.0777355,78.9282158 47.9447236,78.7278056 C31.962839,81.1578379 15.9814195,83.5874052 0,86.0174374 C34.0459161,56.5915415 101.440168,0 101.440168,0 C101.508534,0.176230814 74.0117895,44.1665716 60.8008299,65.0696851 C60.9650019,65.3300789 60.9887208,65.368208 61.1528927,65.6290668 Z" id="Stroke-3"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
