@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "react-scripts": "latest",
-    "serverless-finch": "^2.3.2",
+    "serverless-finch": "^2.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

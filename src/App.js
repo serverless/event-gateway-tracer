@@ -36,7 +36,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchEvents()
-    setInterval(this.fetchEvents, 4000)
+    setInterval(this.fetchEvents, 6000)
   }
 
   /*
@@ -134,7 +134,7 @@ class App extends Component {
             className={`${this.state.active.settings ? 'settings-wrapper' : 'settings-wrapper-hidden'}`}
             >
                <div className='settings'>
-                 <p>This is a test</p>
+                 <p>Settings (Coming Soon)</p>
                </div>
             </div>
           </div>
