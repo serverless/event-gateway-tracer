@@ -1,33 +1,16 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
-    "react-json-pretty": "^1.7.9",
-    "react-redux": "latest",
-    "react-vertical-timeline-component": "^2.3.1",
-    "redux": "latest",
-    "redux-logger": "latest",
-    "redux-thunk": "latest",
-    "uuid": "^3.3.2",
-    "vis": "^4.21.0"
-  },
-  "devDependencies": {
-    "react-scripts": "latest",
-    "serverless-finch": "^2.3.2"
-  },
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@serverless/serverless-event-gateway-plugin": "^0.7.8",
+    "serverless-finch": "^2.3.2"
+  }
 }

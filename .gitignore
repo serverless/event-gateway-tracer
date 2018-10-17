@@ -29,6 +29,7 @@ npm-debug.log
 tmp
 dist
 .env
+env.yml
 .eslintcache
 yarn.lock
 default.etcd

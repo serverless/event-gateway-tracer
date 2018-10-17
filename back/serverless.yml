@@ -1,0 +1,87 @@
+service: event-gateway-tracer
+app: red-accenture
+tenant: ac360
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  environment:
+    DYNAMODB_TABLE: red-accenture-events
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+functions:
+  saveEvent:
+    handler: events.save
+    events:
+      - eventgateway:
+          type: async
+          eventType: com.red.hello.world
+      - eventgateway:
+          type: async
+          eventType: eventgateway.event.received
+      - eventgateway:
+          type: async
+          eventType: eventgateway.function.invoking
+      - eventgateway:
+          type: async
+          eventType: eventgateway.function.invocationFailed
+      - eventgateway:
+          type: async
+          eventType: eventgateway.function.invoked
+  fetchEvents:
+    handler: events.fetch
+    events:
+      - http:
+          path: events
+          method: get
+          cors: true
+
+custom:
+  client:
+    bucketName: event-gateaway-tracer
+    distributionFolder: build
+    indexDocument: index.html
+    errorDocument: error.html
+  eventgateway:
+    url: ac360-red-accenture.slsgateway.com
+    accessKey: ${file(env.yml):eventGatewayKey}
+  eventTypes:
+    com.red.hello.world:
+    eventgateway.event.received:
+    eventgateway.function.invoking:
+    eventgateway.function.invocationFailed:
+    eventgateway.function.invoked:
+
+resources:
+  Resources:
+    EventsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: traceId
+            AttributeType: S
+          - AttributeName: eventTime
+            AttributeType: N
+        KeySchema:
+          - AttributeName: traceId
+            KeyType: HASH
+          - AttributeName: eventTime
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+
+plugins:
+  - serverless-finch
+  - '@serverless/serverless-event-gateway-plugin'

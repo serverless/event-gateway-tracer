@@ -234,10 +234,14 @@ input[type=submit]:focus {
   margin: 2em 0 3em 0!important;
 }
 
+.vertical-timeline-element-date {
+  display: none!important;
+}
+
 .vertical-timeline-element-icon {
   width: 20px!important;
   height: 20px!important;
-  top: 50px!important;
+  top: 35%!important;
   left: 10px!important;
   margin: 0!important;
   z-index: 10;
@@ -259,42 +263,48 @@ input[type=submit]:focus {
   padding: 0px!important;
   margin-left: 60px!important;
   border-radius: 2px!important;
-  box-shadow: 0 2px 3px #c5c5c5!important;
-  border: 4px solid #ffffff;
-  transition: all .2s ease-in-out;
-}
-
-.active .vertical-timeline-element-content {
-  border: 4px solid blue;
-}
-
-.vertical-timeline-element-inner {
-  padding: 1em 1em 1.5em 1.5em!important;
-}
-
-.vertical-timeline-element-content:hover {
-  cursor: pointer;
-  transform: scale(1.04);
+  box-shadow: none!important;
+  border: none!important;
+  background: none!important;
+  transition: none!important;
 }
 
 .vertical-timeline-element-content::before {
   display: none;
 }
 
-.vertical-timeline-element-title {
+.active .vertical-timeline-element-content {
+  border: 4px solid blue;
+}
+
+.vertical-timeline-element-event {
+  padding: 1em 1em 1.5em 1.5em;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 2px 3px #c5c5c5;
+  border: 4px solid #ffffff;
+  transition: all .2s ease-in-out;
+}
+
+.vertical-timeline-element-event:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+}
+
+.vertical-timeline-element-event .event-title {
   font-size: 20px!important;
   font-weight: 600!important;
   margin: 0!important;
   overflow-wrap: break-word!important;
 }
 
-.vertical-timeline-element-time {
+.vertical-timeline-element-event .event-time {
   font-size: 16px!important;
   font-weight: 400!important;
   margin: 5px 0 0 0!important;
 }
 
-.vertical-timeline-element-source {
+.vertical-timeline-element-event .event-source {
   font-size: 14px!important;
   font-weight: 400!important;
   margin: 5px 0 0 0!important;
@@ -302,8 +312,12 @@ input[type=submit]:focus {
   overflow-wrap: break-word!important;
 }
 
-.vertical-timeline-element-date {
-  display: none!important;
+.vertical-timeline-element-function {
+  padding: 0.75em 1em 1.5em 0.4em;
+  /* border-radius: 2px; */
+  /* background: rgba(0,0,0,0.04); */
+  /* box-shadow: 0 2px 3px rgba(0,0,0,0.05) inset; */
+  transition: all .2s ease-in-out;
 }
 
 /* Event Preview */

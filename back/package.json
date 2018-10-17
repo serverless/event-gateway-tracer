@@ -1,15 +1,14 @@
 {
-  "name": "aws-s3-website",
+  "name": "back",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "events.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.238.1",
-    "klaw-sync": "^4.0.0"
+    "moment": "^2.22.2"
   }
 }

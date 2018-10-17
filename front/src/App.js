@@ -23,7 +23,8 @@ class App extends Component {
 
     this.state = {
       event: {},
-      events: [],
+      eventIDs: [],
+      timelineElements: [], // Timeline Elements
       active: {
         settings: false,
       }
@@ -36,49 +37,98 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchEvents()
-    setInterval(this.fetchEvents, 6000)
+    // setInterval(this.fetchEvents, 1000)
   }
 
   /*
   * Fetch Events
   */
 
+  // TODO: Queries via date
+  // TODO: Pagination via DynamoDB
+
   fetchEvents = () => {
 
-    const events = [{
-      eventID: Math.random().toString(36).substr(2, 5),
-      eventTime: '2018-04-05T17:31:00Z',
-      eventType: 'com.red.air.unicorn.flight.trigger.update',
-      source: '/flight-information-service',
-      data: {
-        foo: 'bar',
-        fixx: 'buzz',
-        blah: 'boo',
-        a: 'b',
-        b: 1233,
-        c: ["hi", 123, {
-          hello: 'there'
-        }]
-      }
-    }]
+    const self = this
 
-    events.forEach((evt) => {
-
-      this.state.events.push(
-        <VerticalTimelineElement
-          key={evt.eventID}
-          icon={<img className='icon-bolt' src={imgBolt} />}
-        >
-          <div className='vertical-timeline-element-inner' onClick={() => this.clickEvent(evt)}>
-            <p className="vertical-timeline-element-title">{evt.eventType}</p>
-            <p className="vertical-timeline-element-time">October 14th, 2018 @ 10:03:01</p>
-            <p className="vertical-timeline-element-source">/flight-information-service</p>
-          </div>
-        </VerticalTimelineElement>
-      )
+    fetch('https://nsa965npg3.execute-api.us-east-1.amazonaws.com/dev/events',
+    {
+      method: 'GET',
     })
+      .then(response => response.json())
+      .then((data) => {
 
-    this.setState(this.state)
+        const newEventIDs = []
+        const newTimelineElements = []
+
+        data.forEach((evt) => {
+
+          // If for whatever reason we've processed this event already, skip it.
+          if (self.state.eventIDs.indexOf(evt.eventID) >= 0) return
+          // If not, add event ID to eventIDs array
+          else newEventIDs.push(evt.eventID)
+
+          // Ensure a timelineElement item exists
+          if (!this.state.timelineElements[evt.eventID]) {
+            this.state.timelineElements[evt.eventID] = {
+              event: {},
+              sinks: [{}],
+              view: {},
+            }
+          }
+          let timelineElement = this.state.timelineElements[evt.eventID]
+
+          if (evt.eventType == 'eventgateway.function.invoked') {
+            timelineElement.functions.push(evt)
+          }
+
+          // Handle by event type
+          // switch(evt.eventType) {
+          //   case 'eventgateway.event.received':
+          //     break
+          //   case 'eventgateway.function.invoking':
+          //     break
+          //   case 'eventgateway.function.invoked':
+          //
+          //     newTimelineElements.push(
+          //       <VerticalTimelineElement
+          //         key={evt.eventID}
+          //         icon={<img className='icon-bolt' src={imgBolt} />}
+          //       >
+          //         <div className='vertical-timeline-element-function'>
+          //           <p className="vertical-timeline-element-title">{evt.data.functionId}</p>
+          //         </div>
+          //       </VerticalTimelineElement>
+          //     )
+          //
+          //     break
+          //   case 'eventgateway.function.invocationFailed':
+          //     break
+          //   default:
+          //
+          //     newTimelineElements.push(
+          //       <VerticalTimelineElement
+          //         key={evt.eventID}
+          //         icon={<img className='icon-bolt' src={imgBolt} />}
+          //       >
+          //         <div className='vertical-timeline-element-event' onClick={() => this.clickEvent(evt)}>
+          //           <p className="event-title">{evt.eventType}</p>
+          //           <p className="event-time">October 14th, 2018 @ 10:03:01</p>
+          //         </div>
+          //       </VerticalTimelineElement>
+          //     )
+          //     break
+          // }
+        })
+
+        data.forEach((evt) => {
+          
+        })
+
+        this.setState({
+          timelineElements: self.state.timelineElements.concat(newTimelineElements)
+        })
+      })
   }
 
   /*
@@ -163,7 +213,7 @@ class App extends Component {
             <div className='column column-8'></div>
 
             <div className='column column-40 timeline-wrapper'>
-              <VerticalTimeline layout="1-column">{this.state.events}</VerticalTimeline>
+              <VerticalTimeline layout="1-column">{this.state.timelineElements}</VerticalTimeline>
             </div>
 
             <div className='column column-52'></div>
